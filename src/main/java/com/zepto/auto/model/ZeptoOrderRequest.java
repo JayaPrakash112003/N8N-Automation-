@@ -17,7 +17,17 @@ public class ZeptoOrderRequest {
         return quantity;
     }
 
+    private String upiId;
+
     public void setQuantity(String quantity) {
         this.quantity = quantity;
+    }
+
+    public String getUpiId() {
+        return upiId;
+    }
+
+    public void setUpiId(String upiId) {
+        this.upiId = upiId;
     }
 }

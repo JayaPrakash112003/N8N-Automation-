@@ -33,6 +33,7 @@ public class ZeptoOrderService {
 
         browser.close();
 
-        return "Order placed for " + request.getProductName() + " " + request.getQuantity();
+        return "Order placed for " + request.getProductName() + " " + request.getQuantity() + " with UPI: "
+                + request.getUpiId();
     }
 }

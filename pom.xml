@@ -1,15 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-         https://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="
+           http://maven.apache.org/POM/4.0.0
+           http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- ✅ VERY IMPORTANT -->
+    <!-- Parent manages Spring Boot versions -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.5</version>
+        <version>3.2.1</version>
         <relativePath/>
     </parent>
 
@@ -17,13 +19,14 @@
     <artifactId>zepto-automation</artifactId>
     <version>1.0.0</version>
     <name>zepto-automation</name>
-    <description>Zepto Automation Spring Boot</description>
+    <description>Spring Boot Zepto Automation Project</description>
 
+    <!-- Java version -->
     <properties>
         <java.version>17</java.version>
-        <playwright.version>1.40.0</playwright.version>
     </properties>
 
+    <!-- DEPENDENCIES -->
     <dependencies>
 
         <!-- Spring Boot Web -->
@@ -32,29 +35,42 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- Playwright -->
-        <dependency>
-            <groupId>com.microsoft.playwright</groupId>
-            <artifactId>playwright</artifactId>
-            <version>${playwright.version}</version>
-        </dependency>
-
-        <!-- Lombok -->
+        <!-- Lombok (optional, safe) -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
         </dependency>
 
+        <!-- Spring Boot Test (FIXES JUnit ERROR) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
+    <!-- BUILD -->
     <build>
         <plugins>
-            <!-- Spring Boot Plugin -->
+
+            <!-- Spring Boot Maven Plugin -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
+            <!-- Compiler Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>17</source>
+                    <target>17</target>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 

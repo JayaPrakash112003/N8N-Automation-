@@ -3,11 +3,11 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="
            http://maven.apache.org/POM/4.0.0
-           http://maven.apache.org/xsd/maven-4.0.0.xsd">
+           https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- Spring Boot Parent (MANAGES ALL VERSIONS) -->
+    <!-- Spring Boot Parent -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -15,6 +15,7 @@
         <relativePath/>
     </parent>
 
+    <!-- PROJECT INFO -->
     <groupId>com.zepto</groupId>
     <artifactId>zepto-automation</artifactId>
     <version>1.0.0</version>
@@ -62,6 +63,10 @@
 
     <!-- BUILD CONFIG -->
     <build>
+
+        <!-- 🔥 FIXED JAR NAME (VERY IMPORTANT FOR RENDER) -->
+        <finalName>app</finalName>
+
         <plugins>
 
             <!-- Spring Boot Plugin -->

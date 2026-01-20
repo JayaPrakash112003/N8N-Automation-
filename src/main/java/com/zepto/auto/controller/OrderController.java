@@ -1,18 +1,36 @@
-package com.zepto.auto.controller;
+package com.zepto.controller;
 
 import com.zepto.dto.OrderRequest;
+import com.zepto.service.ZeptoAutomationService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
 @RequestMapping("/order")
 public class OrderController {
 
+    private final ZeptoAutomationService service;
+
+    public OrderController(ZeptoAutomationService service) {
+        this.service = service;
+    }
+
     @PostMapping
-    public String placeOrder(@RequestBody OrderRequest request) {
+    public Map<String, Object> placeOrder(@RequestBody OrderRequest request) {
 
-        System.out.println("Products: " + request.getProducts());
-        System.out.println("UPI ID: " + request.getUpiId());
+        String product = request.getProducts().get(0);
+        service.addToCart(product);
 
-        return "Order placed successfully";
+        return Map.of(
+                "status", "success",
+                "product", product,
+                "upi_id", request.getUpi_id()
+        );
+    }
+
+    @GetMapping("/health")
+    public String health() {
+        return "OK";
     }
 }

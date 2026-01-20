@@ -20,4 +20,5 @@ RUN mvn package -DskipTests
 EXPOSE 8080
 
 # Run Spring Boot app
-CMD ["java", "-jar", "target/n8nauto-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "target/zepto-automation-1.0.0.jar"]
+

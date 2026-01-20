@@ -7,7 +7,7 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- Parent manages Spring Boot versions -->
+    <!-- Spring Boot Parent (MANAGES ALL VERSIONS) -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -19,11 +19,13 @@
     <artifactId>zepto-automation</artifactId>
     <version>1.0.0</version>
     <name>zepto-automation</name>
-    <description>Spring Boot Zepto Automation Project</description>
+    <description>Spring Boot + Playwright Automation</description>
 
-    <!-- Java version -->
+    <!-- JAVA VERSION -->
     <properties>
         <java.version>17</java.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
     <!-- DEPENDENCIES -->
@@ -35,14 +37,21 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- Lombok (optional, safe) -->
+        <!-- Playwright Java -->
+        <dependency>
+            <groupId>com.microsoft.playwright</groupId>
+            <artifactId>playwright</artifactId>
+            <version>1.42.0</version>
+        </dependency>
+
+        <!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
         </dependency>
 
-        <!-- Spring Boot Test (FIXES JUnit ERROR) -->
+        <!-- Spring Boot Test (JUnit 5) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -51,23 +60,23 @@
 
     </dependencies>
 
-    <!-- BUILD -->
+    <!-- BUILD CONFIG -->
     <build>
         <plugins>
 
-            <!-- Spring Boot Maven Plugin -->
+            <!-- Spring Boot Plugin -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
-            <!-- Compiler Plugin -->
+            <!-- Java Compiler -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
                 <configuration>
-                    <source>17</source>
-                    <target>17</target>
+                    <release>17</release>
                 </configuration>
             </plugin>
 

@@ -1,10 +1,25 @@
 package com.zepto.dto;
 
-import lombok.Data;
 import java.util.List;
 
-@Data
 public class OrderRequest {
+
     private List<String> products;
-    private String upi_id;
+    private String upiId;
+
+    public List<String> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<String> products) {
+        this.products = products;
+    }
+
+    public String getUpiId() {
+        return upiId;
+    }
+
+    public void setUpiId(String upiId) {
+        this.upiId = upiId;
+    }
 }

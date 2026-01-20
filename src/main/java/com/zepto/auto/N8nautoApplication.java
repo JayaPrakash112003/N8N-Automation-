@@ -4,7 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ZeptoAutomationApplication {
+public class N8nautoApplication {
     public static void main(String[] args) {
         SpringApplication.run(ZeptoAutomationApplication.class, args);
     }

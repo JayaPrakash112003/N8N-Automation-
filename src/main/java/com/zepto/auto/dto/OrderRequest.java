@@ -5,7 +5,7 @@ import java.util.List;
 public class OrderRequest {
 
     private List<String> products;
-    private String upiId;
+    private String upi_id;
 
     public List<String> getProducts() {
         return products;
@@ -15,11 +15,11 @@ public class OrderRequest {
         this.products = products;
     }
 
-    public String getUpiId() {
-        return upiId;
+    public String getUpi_id() {
+        return upi_id;
     }
 
-    public void setUpiId(String upiId) {
-        this.upiId = upiId;
+    public void setUpi_id(String upi_id) {
+        this.upi_id = upi_id;
     }
 }

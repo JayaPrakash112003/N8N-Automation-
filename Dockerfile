@@ -1,10 +1,11 @@
-# Playwright official Java image (includes Chromium + deps)
-FROM mcr.microsoft.com/playwright/java:v1.42.0-jammy
+# -----------------------------
+# BUILD STAGE
+# -----------------------------
+FROM maven:3.9.6-eclipse-temurin-17 AS build
 
-# Set working directory
 WORKDIR /app
 
-# Copy Maven config first (for cache)
+# Copy pom.xml first (for caching)
 COPY pom.xml .
 
 # Download dependencies
@@ -13,12 +14,22 @@ RUN mvn dependency:go-offline
 # Copy source code
 COPY src ./src
 
-# Build Spring Boot JAR
-RUN mvn package -DskipTests
+# Build the JAR
+RUN mvn clean package -DskipTests
 
-# Expose Render port
+
+# -----------------------------
+# RUNTIME STAGE
+# -----------------------------
+FROM eclipse-temurin:17-jre
+
+WORKDIR /app
+
+# Copy the built JAR from build stage
+COPY --from=build /app/target/app.jar app.jar
+
+# Expose port (Render uses 8080)
 EXPOSE 8080
 
-# Run Spring Boot app
-CMD ["java", "-jar", "target/zepto-automation-1.0.0.jar"]
-
+# Run the application
+CMD ["java", "-jar", "app.jar"]

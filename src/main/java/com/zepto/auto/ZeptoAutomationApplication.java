@@ -1,10 +1,11 @@
-package com.zepto;
+package com.zepto.auto;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class N8nautoApplication {
+public class ZeptoAutomationApplication {
+
     public static void main(String[] args) {
         SpringApplication.run(ZeptoAutomationApplication.class, args);
     }
